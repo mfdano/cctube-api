@@ -1,12 +1,32 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Query, Param } from '@nestjs/common';
+import { YoutubeService } from './youtube.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  MAX_RESULTS = 12;
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  constructor(private readonly youtubeService: YoutubeService) {}
+
+  @Get('/channels')
+  async getChannels(@Query('query') query: string): Promise<any> {
+    try {
+      let response = await this.youtubeService.searchChannel(query, this.MAX_RESULTS);
+      
+      return response.data;
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  @Get('/channels/:channelId/videos')
+  async getVideos(@Param() params, @Query('query') query: string, @Query('max_results') maxResults: number): Promise<any> {
+    try {
+      let response = await this.youtubeService
+      .searchVideoInChannel(params.channelId, query, maxResults ? maxResults : this.MAX_RESULTS);
+      
+      return response.data;
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
