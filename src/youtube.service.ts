@@ -1,5 +1,4 @@
 import { Injectable, HttpService } from '@nestjs/common';
-import { Observable } from 'rxjs';
 import { AxiosResponse } from 'axios';
 
 @Injectable()
@@ -10,7 +9,7 @@ export class YoutubeService {
 
   constructor(private readonly httpService: HttpService) {
     this.baseURL = 'https://www.googleapis.com/youtube/v3/search';
-    this.authKey = 'AIzaSyB4blLAWWmKyepwWEDw9hOiTYGnhH6NU2I';
+    this.authKey = 'AIzaSyARIP07hkfvu8wABEOszpF-q8BH1X9Ac9Y';
   }
 
   async searchChannel(query: string, maxResults: Number): Promise<AxiosResponse<any>> {

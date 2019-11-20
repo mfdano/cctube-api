@@ -14,19 +14,19 @@ export class AppController {
       
       return response.data;
     } catch (e) {
-      console.log(e)
+      console.log(JSON.stringify(e, null, 2))
     }
   }
 
   @Get('/channels/:channelId/videos')
-  async getVideos(@Param() params, @Query('query') query: string, @Query('max_results') maxResults: number): Promise<any> {
+  async getVideos(@Param() params, @Query('query') query: string, @Query('max_results') maxResults: number, @Query('pageToken') pageToken: string): Promise<any> {
     try {
       let response = await this.youtubeService
-      .searchVideoInChannel(params.channelId, query, maxResults ? maxResults : this.MAX_RESULTS);
+      .searchVideoInChannel(params.channelId, query, maxResults ? maxResults : this.MAX_RESULTS, pageToken);
       
       return response.data;
     } catch (e) {
-      console.log(e)
+      console.log(JSON.stringify(e, null, 2))
     }
   }
 }
