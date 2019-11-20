@@ -1,6 +1,6 @@
-## Description
+## Descripción
 
-La API fue desarrollada con [NestJS]: https://docs.nestjs.com
+La API fue desarrollada con [NestJS]: https://docs.nestjs.com y con NodeJS (12.13.0)
 
 ## Instalar dependencias
 
