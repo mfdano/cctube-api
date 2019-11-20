@@ -14,7 +14,7 @@ $ npm install
 $ npm run start
 ```
 
-## Support
+## Endpoints
 
 Este repositorio ya incluye los archivos estáticos de la SPA, los endpoints de la API son los siguientes
 
